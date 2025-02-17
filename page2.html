@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Griffy&display=swap" rel="stylesheet">
+    <title>Sentiments</title>
+    <style>
+        body {
+            background-color: #ffdde1;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: #ff4b5c;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            flex-direction: column;
+            margin: 10px;
+            border: 10px solid #ff4b5c;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Griffy', cursive;
+            font-size: 4em;
+            color: #ff4b5c;
+            text-shadow: 1px 1px 2px #b84e5c, -1px -1px 2px #b84e5c, 1px -1px 2px #b84e5c, -1px 1px 2px #b84e5c;
+            padding: 5px 15px;
+            margin-top: 0;
+            margin-bottom: 40px;
+            background-color: transparent;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .long-text {
+            font-size: 1.5em;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            background-color: #ffb6c1;
+            padding: 30px 20px;
+            border-radius: 15px;
+            color: #ff4b5c;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .love-button, .hate-button {
+            font-size: 1.5em;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .love-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .love-button:hover {
+            background-color: #388E3C;
+        }
+
+        .hate-button {
+            background-color: #E53935;
+            color: white;
+        }
+
+        .hate-button:hover {
+            background-color: #B71C1C;
+        }
+
+        /* Cœurs flottants */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            transform: rotate(-45deg);
+            animation: float 4s infinite;
+            z-index: -1;
+        }
+        
+        .heart:before, .heart:after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 10px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(-45deg); opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(-45deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Je t'aime Killian ❤️</h1>
+
+    <div class="long-text">
+        <p>
+            Mon amour, chaque jour passé à tes côtés est une véritable bénédiction. Ta présence dans ma vie transforme chaque instant en un rêve éveillé. Je me sens tellement chanceux(se) d’avoir trouvé quelqu'un d’aussi exceptionnel que toi. Tu es ma raison de sourire, ma source de bonheur et ma plus grande joie. Chaque moment passé avec toi est précieux et je tiens à te dire à quel point je t’aime.
+        </p>
+        <p>
+            Depuis que tu es dans ma vie, je vois tout avec plus de couleur et de lumière. Ta gentillesse, ton amour et ta présence m'apportent un équilibre que je n'avais jamais connu auparavant. J’ai hâte de partager encore plus de moments merveilleux à tes côtés et de construire ensemble notre avenir. Tu es celui/celle qui rend chaque jour plus beau, et je te remercie du fond du cœur pour tout ce que tu m’apportes.
+        </p>
+    </div>
+
+    <div class="buttons">
+        <button class="love-button" onclick="window.location.href='amour.html';">Moi aussi je t'aime 💚</button>
+        <button class="hate-button" onclick="window.location.href='tristesse.html';">Je t'aime pas, arrête ❌</button>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            document.body.appendChild(heart);
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 150);
+    </script>
+</body>
+</html>
+
+

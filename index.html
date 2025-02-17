@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Griffy&display=swap" rel="stylesheet">
+
+    <title>Pour Toi Mon Amour</title>
+    <style>
+        body {
+            background-color: #ffdde1;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: #ff4b5c;
+        
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            margin: 10px;
+
+            border: 10px solid #ff4b5c;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden; /* Permet d'éviter que les cœurs sortent du conteneur */
+        }
+
+        h1 {
+            font-family: 'Griffy', cursive;
+            font-size: 4em;
+            color: #ff4b5c;
+            text-shadow: 
+                1px 1px 2px #b84e5c, 
+                -1px -1px 2px #b84e5c, 
+                1px -1px 2px #b84e5c, 
+                -1px 1px 2px #b84e5c;
+            padding: 5px 15px;
+            margin-bottom: 40px;
+            background-color: transparent;
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: 0;
+            z-index: 2; /* Assure que le titre est au-dessus des cœurs */
+        }
+
+        p {
+            font-size: 2em;
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #ffb6c1;
+            padding: 10px 20px;
+            border-radius: 15px;
+            color: #ff4b5c;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 2; /* Assure que le texte est au-dessus des cœurs */
+        }
+
+        .click-button {
+            background-color: #ff4b5c;
+            color: white;
+            font-size: 1.5em;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 40px;
+            z-index: 2; /* Assure que le bouton est au-dessus des cœurs */
+        }
+
+        .click-button:hover {
+            background-color: #b84e5c;
+        }
+
+        .click-button:active {
+            background-color: #b84e5c;
+        }
+
+        /* Conteneur des cœurs pour les placer en arrière-plan */
+        .hearts-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* Cœurs animés */
+        .heart {
+            position: absolute;
+            width: 30px; /* Plus grand que sur la version précédente */
+            height: 30px; /* Plus grand que sur la version précédente */
+            background-color: red;
+            transform: rotate(-45deg);
+            opacity: 0.8;
+            animation: float 8s linear infinite; /* Plus lent que sur la version précédente */
+            z-index: 1; /* Les cœurs sont en dessous du texte et du bouton */
+        }
+
+        .heart:before, .heart:after {
+            content: "";
+            position: absolute;
+            width: 30px; /* Plus grand que sur la version précédente */
+            height: 30px; /* Plus grand que sur la version précédente */
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -20px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 20px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(-45deg); /* Départ depuis le bas de la page */
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(-45deg); /* Fin en haut de la page */
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Mon Amour ❤️</h1>
+    <p>Chaque jour avec toi est un cadeau précieux. Je t’aime plus que les mots ne peuvent le dire. 💖</p>
+
+    <!-- Bouton "Clique" pour rediriger vers la deuxième page -->
+    <button class="click-button" onclick="window.location.href='page2.html';">Clique</button>
+
+    <!-- Conteneur des cœurs flottants -->
+    <div class="hearts-container"></div>
+
+    <script>
+        // Fonction pour créer les cœurs flottants
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            document.querySelector('.hearts-container').appendChild(heart);
+
+            // Placement et animation rapide
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 4 + 4 + 's'; // Plus lent, entre 4s et 8s
+            heart.style.opacity = Math.random();
+            heart.style.transform = `scale(${Math.random() * 1.5 + 1})`; // Plus grand que la version précédente
+
+            // NE PAS supprimer les cœurs pour qu'il y en ait toujours plus !
+        }
+        
+        // Génération ultra-rapide de cœurs ❤️🔥
+        setInterval(createHeart, 80); // Plus de cœurs, en créer toutes les 50ms !
+    </script>
+</body>
+</html>
